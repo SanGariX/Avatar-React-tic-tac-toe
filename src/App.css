@@ -58,3 +58,11 @@ body {
 .info_hehe_on {
   color: red !important;
 }
+.btn_reset {
+  display: block;
+  background-color: aquamarine;
+  margin: 20px auto;
+  width: 60px;
+  height: 30px;
+  font-size: 15px;
+}

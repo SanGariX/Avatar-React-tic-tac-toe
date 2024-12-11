@@ -102,6 +102,13 @@ function App() {
       setCurrentStep(SYMBOL_O);
     }
   };
+  function resetFn() {
+    setCurrentStep(SYMBOL_X);
+    setWin(false);
+    SetStyleWin("");
+    SetcomboWin([]);
+    setState([null, null, null, null, null, null, null, null, null]);
+  }
   return (
     <div className={`game`}>
       <div className="get_info">
@@ -133,6 +140,14 @@ function App() {
           );
         })}
       </div>
+      <button
+        onClick={() => {
+          resetFn();
+        }}
+        className={`btn_reset`}
+      >
+        Reset
+      </button>
     </div>
   );
 }
