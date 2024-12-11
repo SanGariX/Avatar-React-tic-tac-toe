@@ -1,6 +1,10 @@
 body {
   position: relative;
 }
+.game {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .grid {
   position: relative;
   margin: 20px auto;
@@ -62,7 +66,13 @@ body {
   display: block;
   background-color: aquamarine;
   margin: 20px auto;
-  width: 60px;
-  height: 30px;
+  padding: 5px 20px;
   font-size: 15px;
+}
+.nav_inner {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
 }

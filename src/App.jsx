@@ -34,6 +34,8 @@ function App() {
   const [StyleWin, SetStyleWin] = useState("");
   //Хто переміг
   const [comboWin, SetcomboWin] = useState([]);
+  const [counter, setCounter] = useState([0, 0]);
+  console.log(counter);
   //Для розуміння хто переміг та чи перемога є
   function Winner(newStates) {
     const stateStartX = [];
@@ -54,10 +56,12 @@ function App() {
         SetcomboWin([idx, SYMBOL_X]);
         setWin(`${SYMBOL_X}`);
         SetStyleWin(true);
+        setCounter([(counter[0] += 1), counter[1]]);
       } else if (resultsO) {
         SetcomboWin([idx, SYMBOL_O]);
         setWin(`${SYMBOL_O}`);
         SetStyleWin(true);
+        setCounter([counter[0], (counter[1] += 1)]);
       }
     });
   }
@@ -111,6 +115,24 @@ function App() {
   }
   return (
     <div className={`game`}>
+      <header className="header">
+        <nav className="nav_inner">
+          <div>
+            Хрестики: <span>{`${counter[0]}`}</span>
+          </div>
+          <button
+            onClick={() => {
+              resetFn();
+            }}
+            className={`btn_reset`}
+          >
+            New Game
+          </button>
+          <div>
+            <span>{`${counter[1]}`}</span> :Нулики
+          </div>
+        </nav>
+      </header>
       <div className="get_info">
         <span>
           Йде крок:
@@ -120,9 +142,6 @@ function App() {
         </span>
         <div className="Winner_div">
           Winner : <span className={`${LogicColorSymbol(win)}`}>{win}</span>
-        </div>
-        <div className={`info_hehe ${StyleWin ? "info_hehe_on" : ""}`}>
-          Шо ти клікаєш я тебе зараз по клікаю, виходь! звідси!
         </div>
       </div>
       <div className={`grid ${StyleWin ? "win_this_game" : ""}`}>
@@ -140,14 +159,6 @@ function App() {
           );
         })}
       </div>
-      <button
-        onClick={() => {
-          resetFn();
-        }}
-        className={`btn_reset`}
-      >
-        Reset
-      </button>
     </div>
   );
 }
